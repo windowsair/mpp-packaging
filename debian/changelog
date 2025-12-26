@@ -1,3 +1,30 @@
+mpp (1.6.0-0+rk2) stable; urgency=critical
+
+  * d/patches: Fix AV1 CDF usage issue on rk3576
+
+ -- Detlev Casanova <detlev.casanova@collabora.com>  Fri, 29 Nov 2024 10:22:20 -0500
+
+mpp (1.6.0-0+rk1) stable; urgency=critical
+
+  * Update MPP from upstream commit 05b809393c41120c81fbdb39356b01c92aa77907
+  * d/patches: Remove unused VP8 patch
+  * Also install static MPP library
+  * d/patches: Fix using card0 instead of renderD128
+
+ -- Detlev Casanova <detlev.casanova@collabora.com>  Fri, 20 Sep 2024 10:23:00 -0500
+
+mpp (1.5.0-0+co3) stable; urgency=critical
+
+  * Debian: Build for any architecture
+
+ -- Detlev Casanova <detlev.casanova@collabora.com>  Fri, 05 Apr 2024 09:48:00 -0500
+
+mpp (1.5.0-0+co2) stable; urgency=critical
+
+  * [vp8]: Allow dimensions for 4k
+
+ -- Detlev Casanova <detlev.casanova@collabora.com>  Fri, 24 Mar 2023 13:40:00 -0400
+
 mpp (1.5.0-1) stable; urgency=critical
 
   * [mpp_enc_impl]: Cleanup hal_task on empty eos task

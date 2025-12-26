@@ -1,8 +1,8 @@
 Source: mpp
 Priority: optional
 Maintainer: Randy Li <randy.li@rock-chips.com>
-Build-Depends: debhelper (>= 10), cmake, dh-exec
-Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 13), cmake, dh-exec
+Standards-Version: 4.6.2
 Section: libs
 Homepage: http://www.rock-chips.com
 #Vcs-Git: git://anonscm.debian.org/collab-maint/mpp.git
@@ -11,16 +11,19 @@ Homepage: http://www.rock-chips.com
 Package: librockchip-mpp-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: librockchip-mpp1 (= ${binary:Version}), ${misc:Depends}
 Description: Media Process Platform
 
 Package: librockchip-mpp1
 Architecture: any
+Multi-Arch: same
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Media Process Platform
 
 Package: librockchip-vpu0
 Architecture: any
+Multi-Arch: same
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Media Process Platform
 

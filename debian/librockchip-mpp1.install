@@ -1,3 +1,4 @@
 #! /usr/bin/dh-exec
+usr/lib/${DEB_HOST_MULTIARCH}/librockchip_mpp.a
 usr/lib/${DEB_HOST_MULTIARCH}/librockchip_mpp.so
 usr/lib/${DEB_HOST_MULTIARCH}/librockchip_mpp.so.*

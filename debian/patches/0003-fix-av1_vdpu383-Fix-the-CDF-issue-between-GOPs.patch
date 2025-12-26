@@ -1,0 +1,38 @@
+From: Hongjin Li <vic.hong@rock-chips.com>
+Date: Fri, 29 Nov 2024 14:05:06 +0800
+Subject: fix[av1_vdpu383]: Fix the CDF issue between GOPs
+
+Platform: rk3575/vdpu383
+
+Error case:
+The idr frame (frm0) does not update the cdf, and then frm1,
+when using the cdf, mistakenly uses the cdf of the previous
+gop instead of the default cdf
+
+Solution:
+At the beginning of GOP, reset all validity flags
+
+Reported-by: Detlev Casanova <detlev.casanova@collabora.com>
+
+Source: av1.video.es
+
+Change-Id: I72152664d1c4275cb39f657c94ed4ba89a076465
+Signed-off-by: Hongjin Li <vic.hong@rock-chips.com>
+---
+ mpp/hal/rkdec/av1d/hal_av1d_vdpu383.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/mpp/hal/rkdec/av1d/hal_av1d_vdpu383.c b/mpp/hal/rkdec/av1d/hal_av1d_vdpu383.c
+index ee7b171..99f04cd 100644
+--- a/mpp/hal/rkdec/av1d/hal_av1d_vdpu383.c
++++ b/mpp/hal/rkdec/av1d/hal_av1d_vdpu383.c
+@@ -2066,6 +2066,9 @@ static void vdpu383_av1d_set_cdf(Av1dHalCtx *p_hal, DXVA_PicParams_AV1 *dxva)
+         sprintf(dump_cur_fname_path, "%s/%s", dump_cur_dir, cur_fname);
+     }
+ #endif
++    if (dxva->format.frame_type == AV1_FRAME_KEY)
++        for (i = 0; i < NUM_REF_FRAMES; i++)
++            reg_ctx->ref_info_tbl[i].cdf_valid = 0;
+     /* def coeff cdf idx */
+     coeff_cdf_idx = dxva->quantization.base_qindex <= 20 ? 0 :
+                     dxva->quantization.base_qindex <= 60  ? 1 :
