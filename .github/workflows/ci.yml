@@ -17,7 +17,7 @@ jobs:
           before-build-hook: |
             apt install git
             ls
-            tar --exclude='.git' --exclude='debian' -czf ../mpp_1.6.0.orig.tar.gz ./
+            tar --exclude='.git' --exclude='debian' -czf ../mpp_1.6.1.orig.tar.gz ./
             ls ../
           buildpackage-opts: -sa
       - name: Upload DEB artifacts
