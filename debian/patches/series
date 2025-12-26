@@ -1,3 +1,1 @@
-0001-Revert-fix-drm-Fix-permission-check-issue-on-GKI-ker.patch
-0002-fix-av1_vdpu383-fix-cdf-usage-issue.patch
-0003-fix-av1_vdpu383-Fix-the-CDF-issue-between-GOPs.patch
+0001-Only-use-card0-to-create-DRM-dumb-buffer.patch

@@ -1,0 +1,31 @@
+From 2862a8c489da54ecbe41489b4cdd546d4b61ea47 Mon Sep 17 00:00:00 2001
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Date: Fri, 26 Dec 2025 10:18:24 +0800
+Subject: [PATCH] Only use card0 to create DRM dumb buffer
+
+On upstream linux, the renderer cannot be used to allocate DUMB buffers,
+it has to go through the generic display subsystem, with /dev/dri/card0.
+
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+---
+ osal/allocator/allocator_drm.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/osal/allocator/allocator_drm.c b/osal/allocator/allocator_drm.c
+index 014df3e2..0961140c 100644
+--- a/osal/allocator/allocator_drm.c
++++ b/osal/allocator/allocator_drm.c
+@@ -58,9 +58,8 @@ typedef struct {
+     RK_U32  flags;
+ } allocator_ctx_drm;
+ 
+-/* use renderD128 first to avoid GKI kernel permission issue */
++/* Only use card0 to create DRM dumb buffer */
+ static const char *dev_drm[] = {
+-    "/dev/dri/renderD128",
+     "/dev/dri/card0",
+ };
+ 
+-- 
+2.43.0
+
